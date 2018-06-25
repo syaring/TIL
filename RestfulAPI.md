@@ -16,7 +16,6 @@
   5. Uniform Interface (확장성 높아짐)
   6. Code on demand
 
-  
 
 - REST + API = RESTful API
 
@@ -24,7 +23,7 @@
 
 - REST의 구성  = 자원 + 행위 + 표현  
     GET     /vanillacoding/members/syaring  
-  <행위>                          <자원>
+    <행위>                          <자원>
 
 
 
@@ -51,7 +50,6 @@
 
   - 자원의 관계 표현  
     /vanillacoding/members/**{meberid}**/profile  
-    
 
   - 행위  
     HTTP Method로 표현 (GET / POST / PUT / DELETE)
@@ -62,8 +60,7 @@
     => 모두 resource로, URI 에 표현
 
 - HTTP 응답 상태 코드  
-  ![image-20180625164447284](/var/folders/b3/md1gdk117vzc65q0y66fcz7w0000gn/T/abnerworks.Typora/image-20180625164447284.png)
-  세분화하는 것을 권장
+  ![스크린샷 2018-06-25 오후 4.43.57](/Users/syaring_mac/git/TIL/스크린샷 2018-06-25 오후 4.43.57.png)세분화하는 것을 권장
 
 - RESTful API 의 장/단점  
 
@@ -71,8 +68,6 @@
   - 1 : N (서버 : 클라이언트) 구조에서 효율성이 높음
   - API 메시지만으로도 API를 이해할 수 있음 (Self-descriptiveness)
   - 확장성, 범용성, 독립성 등..
-
-
 
 
 
