@@ -182,3 +182,75 @@ Overriding default command of container
 ### 24. Container Isolation
 
 Container는 독립적으로 존재하기 떄문에 자동으로 서로의 fs를 공유하지 않음
+
+
+
+## Section03
+
+### 25. Creating Docker Images
+
+build image and run container using Dockerfile
+
+- Dockerfile: plain text file that configure how the container behaves.
+- Dockerfile - Docker Client(= Docker CLI) - Docker Server - Usable Image
+- Creating Dockerfile
+  - Specify a base image
+  - Run some commands to install additional programs
+  - Specify a command to run on container startup
+
+### 26. Building a Dockerfile
+
+Goal: Create an image that runs redis-server
+
+- `apk` means Apache package
+- `docker build .`: 현재 위치(.)의 Dockerfile을 실행함
+
+### 27. Dockerfile Teardown
+
+- docker file format
+  - `[instruction][argument]`
+  - `instruction`: telling docker server what to do
+- `FROM`: docker image to use as a base
+- `RUN`: execute while preparing image
+- `CMD`: execute when start up a new container 
+
+### 28. What's a Base Image?
+
+- Why use alpine as a base image?
+  - evey OS has preinstalled set of programs that are useful
+  - apline includes a default set of programs, and it is the why base image is needed
+
+### 29. The Build Process in Detail
+
+- `docker build .`
+  - `build`: run Dockerfile and generate image
+  - `.`: build context, the set of files and folders that belong to project
+- `FROM [image]`: get docker image from Docker Hub
+- `RUN`: run command in the image from upper step's image
+- create new image that added configuration in every steps, and the last image is the result container
+
+### 30. A Breif Recap
+
+1. Create container
+2. Modified FS
+3. Take snapshot of that container's FS for next step, or Output the image generated from previous step if no more steps.
+
+### 31. Rebuilds with Cache
+
+If modify the Dockerfile..
+
+- Using cache: docker know nothing has changed from the last time docker built, so use the image that generated during the previous step again.
+- If there are no change when running Dockerfile, it will extremely fast :)
+- the order change also affected, so can't using cache
+
+### 32. Tagging an Image
+
+- `docker run [image id]`: it is too difficult to remember!
+- so, tagging an image!
+  - `docker build -t [<Docker Id>/<Name of Repo/Prj>:<version>] .`
+  - `docker build -t syaring/redis:latest .`
+  - `docker run syaring/redis:latest`
+
+### 33. Manual Image Generation with Docker Commit
+
+- Create Container by Image, and aslo generate Image using by Container
